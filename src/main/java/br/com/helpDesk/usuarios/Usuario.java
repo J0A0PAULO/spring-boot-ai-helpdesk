@@ -1,13 +1,18 @@
 package br.com.helpDesk.usuarios;
 
+import br.com.helpDesk.usuarios.enums.Roles;
 import jakarta.persistence.*;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +27,10 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
-    private HashSet<Object> roles = new HashSet<>();
+    private HashSet<Roles> roles = new HashSet<>();
 
 
-    public Usuario(Long id, String nome, String email, String senha, HashSet<Object> roles) {
+    public Usuario(Long id, String nome, String email, String senha, HashSet<Roles> roles) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -46,6 +51,43 @@ public class Usuario {
     @Override
     public int hashCode() {
         return Objects.hash(id, nome, email, senha, roles);
+    }
+
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
+    @Override
+    public @Nullable String getPassword() {
+        return senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
     }
 
     public Long getId() {
@@ -80,11 +122,13 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public HashSet<Object> getHoles() {
+    public HashSet<Roles> getRoles() {
         return roles;
     }
 
-    public void setHoles(HashSet<Object> roles) {
+    public void setRoles(HashSet<Roles> roles) {
         this.roles = roles;
     }
 }
+
+
