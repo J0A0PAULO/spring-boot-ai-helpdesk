@@ -1,4 +1,4 @@
-package br.com.entity;
+package br.com.helpDesk.usuarios.entity;
 
 import br.com.helpDesk.usuarios.enums.Roles;
 import jakarta.persistence.*;
@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
@@ -31,7 +32,7 @@ public class Usuario implements UserDetails {
     @CollectionTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuarios_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "roles")
-    private HashSet<Roles> roles = new HashSet<>();
+    private Set<Roles> roles = new HashSet<>();
 
 
     public Usuario(Long id, String nome, String email, String senha, HashSet<Roles> roles) {
@@ -126,11 +127,11 @@ public class Usuario implements UserDetails {
         this.senha = senha;
     }
 
-    public HashSet<Roles> getRoles() {
+    public Set<Roles> getRoles() {
         return roles;
     }
 
-    public void setRoles(HashSet<Roles> roles) {
+    public void setRoles(Set<Roles> roles) {
         this.roles = roles;
     }
 }
