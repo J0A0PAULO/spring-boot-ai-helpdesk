@@ -1,4 +1,4 @@
-package br.com.helpDesk.usuarios;
+package br.com.entity;
 
 import br.com.helpDesk.usuarios.enums.Roles;
 import jakarta.persistence.*;
@@ -27,6 +27,10 @@ public class Usuario implements UserDetails {
     @Column(name = "senha")
     private String senha;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuarios_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "roles")
     private HashSet<Roles> roles = new HashSet<>();
 
 
