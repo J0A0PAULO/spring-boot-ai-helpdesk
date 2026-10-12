@@ -2,17 +2,17 @@ package br.com.helpDesk.usuarios.dto;
 
 import java.util.Objects;
 
-public class LoginRequest{
+public class CadastroLogin {
 
 
     private String email;
     private String nome;
     private String senha;
 
-    public LoginRequest() {
+    public CadastroLogin() {
     }
 
-    public LoginRequest(String email, String nome, String senha) {
+    public CadastroLogin(String email, String nome, String senha) {
         this.email = email;
         this.nome = nome;
         this.senha = senha;
@@ -46,7 +46,7 @@ public class LoginRequest{
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        LoginRequest that = (LoginRequest) o;
+        CadastroLogin that = (CadastroLogin) o;
         return Objects.equals(email, that.email) && Objects.equals(nome, that.nome) && Objects.equals(senha, that.senha);
     }
 
