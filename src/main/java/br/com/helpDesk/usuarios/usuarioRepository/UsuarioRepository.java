@@ -1,6 +1,6 @@
 package br.com.helpDesk.usuarios.usuarioRepository;
 
-import br.com.helpDesk.usuarios.Usuario;
+import br.com.helpDesk.usuarios.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

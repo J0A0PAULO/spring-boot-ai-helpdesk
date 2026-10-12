@@ -1,6 +1,6 @@
 package br.com.helpDesk.config;
 
-import br.com.helpDesk.usuarios.Usuario;
+import br.com.helpDesk.usuarios.entity.Usuario;
 import br.com.helpDesk.usuarios.enums.Roles;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
