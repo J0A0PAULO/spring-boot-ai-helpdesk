@@ -1,4 +1,8 @@
 package br.com.helpDesk.chamados.repository;
 
-public interface ChamadoRepository {
+
+import br.com.helpDesk.chamados.entity.Chamado;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ChamadoRepository  extends JpaRepository<Chamado, Long> {
 }
