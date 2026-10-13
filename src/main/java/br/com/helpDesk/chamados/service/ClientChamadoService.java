@@ -11,19 +11,17 @@ import br.com.helpDesk.usuarios.usuarioRepository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class ChamadoService {
+public class ClientChamadoService {
 
 
     private final UsuarioRepository usuarioRepository;
     private final ChamadoRepository chamadoRepository;
     private final ChamadoMapper chamadoMapper;
 
-    public ChamadoService(UsuarioRepository usuarioRepository, ChamadoRepository chamadoRepository, ChamadoMapper chamadoMapper) {
+    public ClientChamadoService(UsuarioRepository usuarioRepository, ChamadoRepository chamadoRepository, ChamadoMapper chamadoMapper) {
         this.usuarioRepository = usuarioRepository;
         this.chamadoRepository = chamadoRepository;
         this.chamadoMapper = chamadoMapper;
@@ -76,9 +74,9 @@ public class ChamadoService {
     }
 
 
-    public ChamadoReponse alterarChamado(Long idUsuario, Long id, ChamadoRequest request){
+    public ChamadoReponse alterarChamado( Long UsuarioIdLong,Long id, ChamadoRequest request){
 
-        Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow(() -> new NotFound("usuario não encontrado"));
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new NotFound("usuario não encontrado"));
 
         Chamado chamado = chamadoRepository.findById(id).orElseThrow(() -> new NotFound("chamado com " + id + " não encontrado"));
 
@@ -108,6 +106,7 @@ public class ChamadoService {
 
         chamadoRepository.deleteById(id);
     }
+
 
 
 }
