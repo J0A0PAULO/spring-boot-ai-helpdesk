@@ -1,0 +1,45 @@
+package br.com.helpDesk.chamados.dto;
+
+import java.util.Objects;
+
+public class chamadoRequest {
+
+    private String titulo;
+    private String descricao;
+
+    public chamadoRequest() {
+    }
+
+    public chamadoRequest(String titulo, String descricao) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        chamadoRequest that = (chamadoRequest) o;
+        return Objects.equals(titulo, that.titulo) && Objects.equals(descricao, that.descricao);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titulo, descricao);
+    }
+}
