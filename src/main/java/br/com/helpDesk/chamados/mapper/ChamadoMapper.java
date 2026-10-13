@@ -11,9 +11,9 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring")
 public interface ChamadoMapper {
 
-    ChamadoRequest toEntity(Chamado chamado);
+    Chamado toEntity(ChamadoRequest chamado);
 
-    Chamado toDTO(ChamadoReponse chamadoReponse);
+    ChamadoReponse toDTO(Chamado chamado);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void toEntityConvert(ChamadoRequest chamadoRequest, @MappingTarget Chamado chamado);
