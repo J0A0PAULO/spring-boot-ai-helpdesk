@@ -1,6 +1,5 @@
 package br.com.helpDesk.chamados.dto;
 
-
 import java.util.Objects;
 
 public class ChamadoReponse {
