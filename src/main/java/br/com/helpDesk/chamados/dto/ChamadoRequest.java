@@ -2,15 +2,15 @@ package br.com.helpDesk.chamados.dto;
 
 import java.util.Objects;
 
-public class chamadoRequest {
+public class ChamadoRequest {
 
     private String titulo;
     private String descricao;
 
-    public chamadoRequest() {
+    public ChamadoRequest() {
     }
 
-    public chamadoRequest(String titulo, String descricao) {
+    public ChamadoRequest(String titulo, String descricao) {
         this.titulo = titulo;
         this.descricao = descricao;
     }
@@ -34,7 +34,7 @@ public class chamadoRequest {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        chamadoRequest that = (chamadoRequest) o;
+        ChamadoRequest that = (ChamadoRequest) o;
         return Objects.equals(titulo, that.titulo) && Objects.equals(descricao, that.descricao);
     }
 
