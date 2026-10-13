@@ -2,7 +2,7 @@ package br.com.helpDesk.chamados.controller;
 
 import br.com.helpDesk.chamados.dto.ChamadoReponse;
 import br.com.helpDesk.chamados.dto.ChamadoRequest;
-import br.com.helpDesk.chamados.dto.StatusRequest;
+import br.com.helpDesk.chamados.dto.StatusRquest;
 import br.com.helpDesk.chamados.service.AtendenteChamadoService;
 import br.com.helpDesk.chamados.service.ClientChamadoService;
 import br.com.helpDesk.config.JWTUserData;
@@ -64,7 +64,7 @@ public class ChamadoController {
 
     @PreAuthorize("hasRole('ATENDENTE')")
     @PutMapping("/atendente/status/{id}")
-    public ResponseEntity<String> alterarStatusDoPedido(@PathVariable Long id,@RequestBody StatusRequest status) {
+    public ResponseEntity<String> alterarStatusDoPedido(@PathVariable Long id,@RequestBody StatusRquest status) {
         String string = atendenteChamadoService.alterarStatusDoPedido(id, status);
         return ResponseEntity.ok(string);
     }

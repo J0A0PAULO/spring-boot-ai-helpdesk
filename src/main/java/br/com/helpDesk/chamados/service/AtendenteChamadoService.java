@@ -2,7 +2,7 @@ package br.com.helpDesk.chamados.service;
 
 
 import br.com.helpDesk.chamados.dto.ChamadoReponse;
-import br.com.helpDesk.chamados.dto.StatusRequest;
+import br.com.helpDesk.chamados.dto.StatusRquest;
 import br.com.helpDesk.chamados.entity.Chamado;
 import br.com.helpDesk.chamados.mapper.ChamadoMapper;
 import br.com.helpDesk.chamados.repository.ChamadoRepository;
@@ -37,7 +37,7 @@ public class AtendenteChamadoService {
 
     }
 
-    public String alterarStatusDoPedido(Long id, StatusRequest status) {
+    public String alterarStatusDoPedido(Long id, StatusRquest status) {
 
         Chamado chamado = chamadoRepository.findById(id).orElseThrow(() -> new NotFound("chamado nao encontrado"));
         chamado.setStatus(status.getStatus());
