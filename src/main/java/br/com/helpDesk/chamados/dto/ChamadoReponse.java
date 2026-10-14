@@ -4,17 +4,27 @@ import java.util.Objects;
 
 public class ChamadoReponse {
 
+    private Long id;
     private String titulo;
     private String descricao;
     private String status;
 
-    public ChamadoReponse() {
-    }
-
-    public ChamadoReponse(String titulo, String descricao, String status) {
+    public ChamadoReponse(Long id, String titulo, String descricao, String status) {
+        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.status = status;
+    }
+
+    public ChamadoReponse() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -45,11 +55,11 @@ public class ChamadoReponse {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         ChamadoReponse that = (ChamadoReponse) o;
-        return Objects.equals(titulo, that.titulo) && Objects.equals(descricao, that.descricao) && Objects.equals(status, that.status);
+        return Objects.equals(id, that.id) && Objects.equals(titulo, that.titulo) && Objects.equals(descricao, that.descricao) && Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titulo, descricao, status);
+        return Objects.hash(id, titulo, descricao, status);
     }
 }
