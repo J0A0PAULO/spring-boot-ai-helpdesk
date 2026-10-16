@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public record GPT(
+public record GptResponse(
 
         @JsonProperty("model")
         String model,
