@@ -1,4 +1,39 @@
 package br.com.helpDesk.mensagens.dto;
 
-public class GPT {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+
+
+
+
+public record GPT(
+
+        @JsonProperty("model")
+        String model,
+
+        @JsonProperty("choices")
+        List<Choices> choices
+
+) {
+
+    public record Choices(
+
+            @JsonProperty("message")
+            Message message
+    ) {
+        public record Message(
+
+                @JsonProperty("role")
+                String role,
+
+                @JsonProperty("content")
+                String content
+        ) {
+
+        }
+    }
+
 }
