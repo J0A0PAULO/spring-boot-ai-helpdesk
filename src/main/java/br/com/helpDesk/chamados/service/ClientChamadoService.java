@@ -76,7 +76,7 @@ public class ClientChamadoService {
 
     public ChamadoReponse alterarChamado( Long UsuarioIdLong,Long id, ChamadoRequest request){
 
-        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new NotFound("usuario não encontrado"));
+        Usuario usuario = usuarioRepository.findById(UsuarioIdLong).orElseThrow(() -> new NotFound("usuario não encontrado"));
 
         Chamado chamado = chamadoRepository.findById(id).orElseThrow(() -> new NotFound("chamado com " + id + " não encontrado"));
 
