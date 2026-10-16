@@ -3,6 +3,8 @@ package br.com.helpDesk.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -12,15 +14,15 @@ public class GPTconfig {
     @Value("${API_KEY}")
     private String apikey;
 
-    @Value("${$API_URL}")
+    @Value("${API_URL}")
     private String url;
 
     @Bean
     public WebClient webClient() {
         return WebClient.builder()
                 .baseUrl(url)
-                .defaultHeader("Authorization", "Bearer " + apikey)
-                .defaultHeader("Content-Type", "application/json")
+                .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + apikey)
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
     }
 

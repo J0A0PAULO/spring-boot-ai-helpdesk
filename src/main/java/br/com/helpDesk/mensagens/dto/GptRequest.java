@@ -1,4 +1,4 @@
 package br.com.helpDesk.mensagens.dto;
 
-public class MensagemDTO {
+public class gptRequest {
 }
