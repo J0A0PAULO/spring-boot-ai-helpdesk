@@ -33,7 +33,7 @@ public class ClientChamadoService {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new NotFound("usuario com " + id + " não encontrado"));
 
         Chamado entity = chamadoMapper.toEntity(chamadoRequest);
-        entity.setStatus("EM_ABERTO");
+        entity.setStatus("ABERTO");
         entity.setUsuario(usuario);
 
         Chamado save = chamadoRepository.save(entity);
@@ -64,7 +64,7 @@ public class ClientChamadoService {
         Chamado chamado = chamadoRepository.findById(chamadoId).orElseThrow(() -> new NotFound("chamado com" + chamadoId + " não encontrado"));
 
         if (!chamado.getUsuario().getId().equals(usuario.getId())) {
-            throw  new NotFound("Chamado não pertence a esse usuario");
+            throw  new NotFound("chamado não pertence a esse usuario");
         }
 
         ChamadoReponse dto = chamadoMapper.toDTO(chamado);
@@ -81,7 +81,7 @@ public class ClientChamadoService {
         Chamado chamado = chamadoRepository.findById(id).orElseThrow(() -> new NotFound("chamado com " + id + " não encontrado"));
 
         if (!chamado.getUsuario().getId().equals(usuario.getId())){
-            throw  new NotFound("Chamado não pertence a esse usuario");
+            throw  new NotFound("chamado não pertence a esse usuario");
         };
 
         chamadoMapper.toEntityConvert(request, chamado);
@@ -101,7 +101,7 @@ public class ClientChamadoService {
         Chamado chamado = chamadoRepository.findById(id).orElseThrow(() -> new NotFound("usuario não encontrado"));
 
         if (!chamado.getUsuario().getId().equals(usuario.getId())) {
-            throw  new NotFound("Chamado não pertence a esse usuario");
+            throw  new NotFound("chamado não pertence a esse usuario");
         }
 
         chamadoRepository.deleteById(id);
