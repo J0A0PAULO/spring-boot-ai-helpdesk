@@ -13,13 +13,17 @@ public class MensagensResponse {
     private Long id;
     private String conteudo;
     private LocalDateTime dataCriacao;
-    private Chamado chamado;
+    private Long  chamadoId;
 
-    public MensagensResponse(Long id, String conteudo, LocalDateTime dataCriacao, Chamado chamado) {
+
+    public MensagensResponse() {
+    }
+
+    public MensagensResponse(Long id, String conteudo, LocalDateTime dataCriacao, Long chamadoId) {
         this.id = id;
         this.conteudo = conteudo;
         this.dataCriacao = dataCriacao;
-        this.chamado = chamado;
+        this.chamadoId = chamadoId;
     }
 
     public Long getId() {
@@ -46,23 +50,23 @@ public class MensagensResponse {
         this.dataCriacao = dataCriacao;
     }
 
-    public Chamado getChamado() {
-        return chamado;
+    public Long getChamadoId() {
+        return chamadoId;
     }
 
-    public void setChamado(Chamado chamado) {
-        this.chamado = chamado;
+    public void setChamadoId(Long chamadoId) {
+        this.chamadoId = chamadoId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         MensagensResponse that = (MensagensResponse) o;
-        return Objects.equals(id, that.id) && Objects.equals(conteudo, that.conteudo) && Objects.equals(dataCriacao, that.dataCriacao) && Objects.equals(chamado, that.chamado);
+        return Objects.equals(id, that.id) && Objects.equals(conteudo, that.conteudo) && Objects.equals(dataCriacao, that.dataCriacao) && Objects.equals(chamadoId, that.chamadoId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, conteudo, dataCriacao, chamado);
+        return Objects.hash(id, conteudo, dataCriacao, chamadoId);
     }
 }

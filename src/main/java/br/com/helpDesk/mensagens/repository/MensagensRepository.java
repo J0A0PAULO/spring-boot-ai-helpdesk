@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface MensagensRepository extends JpaRepository<Mensagens, Long> {
 
-    List<Mensagens> findByUsuario(Long id);
+    List<Mensagens> findByUsuarioId(Long usuarioId);
 
 
 

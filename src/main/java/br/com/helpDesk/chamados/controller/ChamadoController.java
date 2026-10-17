@@ -6,6 +6,7 @@ import br.com.helpDesk.chamados.dto.StatusRquest;
 import br.com.helpDesk.chamados.service.AtendenteChamadoService;
 import br.com.helpDesk.chamados.service.ClientChamadoService;
 import br.com.helpDesk.config.JWTUserData;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("chamado")
+@Tag(name = "Chamados", description = "Endpoints para gerenciamento de chamados de suporte (Clientes e Atendentes)")
 public class ChamadoController {
 
 

@@ -39,7 +39,7 @@ public class MensagemService {
 
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new NotFound("usuario não encontrado"));
 
-        List<MensagensResponse> listaDeMensagensDoUsuarios = mensagensRepository.findByUsuario(usuario.getId()).stream().map(msm -> mensagensMapper.toDTO(msm)).toList();
+        List<MensagensResponse> listaDeMensagensDoUsuarios = mensagensRepository.findByUsuarioId(usuario.getId()).stream().map(msm -> mensagensMapper.toDTO(msm)).toList();
 
         return listaDeMensagensDoUsuarios;
 
@@ -71,7 +71,7 @@ public class MensagemService {
                 Evite termos excessivamente complexos sem explicação.
                 """;
 
-        List<Chamado> aberto = chamadoRepository.findAllStatus("ABERTO");
+        List<Chamado> aberto = chamadoRepository.findByStatus("ABERTO");
 
         if (aberto.isEmpty()) {
             throw new NullPointerException();

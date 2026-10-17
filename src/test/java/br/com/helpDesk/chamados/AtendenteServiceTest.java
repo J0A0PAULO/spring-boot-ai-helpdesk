@@ -34,7 +34,7 @@ public class AtendenteServiceTest {
     public void alterarStatus() {
 
         Chamado chamado = new Chamado();
-        chamado.setStatus("FINALIZADO");
+        chamado.setStatus("ABERTO");
         chamado.setId(1L);
 
         StatusRquest statusRequest = new StatusRquest();
@@ -95,7 +95,7 @@ public class AtendenteServiceTest {
 
     }
     @Test
-    public void alterarStatusDoPedido() {
+    public void deletarChamado() {
 
         Chamado chamado = new Chamado();
         chamado.setId(1L);

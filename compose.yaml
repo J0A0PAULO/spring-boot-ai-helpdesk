@@ -11,6 +11,10 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/helpdesk
       SPRING_DATASOURCE_USERNAME: helpdesk
       SPRING_DATASOURCE_PASSWORD: 123
+      OPENAI_API_URL: ${GPT_URL}
+      IA_KEY: ${IA_KEY}
+      SPRING_SECURITY_SECRET: ${SPRING_SECURITY_SECRET}
+
 
   postgres:
     image: postgres:16

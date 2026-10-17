@@ -11,10 +11,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class GPTconfig {
 
-    @Value("${API_KEY}")
+    @Value("${openai.api.key}")
     private String apikey;
 
-    @Value("${API_URL}")
+    @Value("${openai.api.url}")
     private String url;
 
     @Bean

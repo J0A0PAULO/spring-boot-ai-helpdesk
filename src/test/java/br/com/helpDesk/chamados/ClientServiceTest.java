@@ -100,7 +100,7 @@ public class ClientServiceTest {
         Long usuarioId =1L;
 
         Usuario usuario = new Usuario();
-        usuario.setId(1L);
+        usuario.setId(usuarioId);
 
         Chamado chamado = new Chamado();
         chamado.setId(1L);
@@ -157,39 +157,27 @@ public class ClientServiceTest {
 
     }
 
-//    public void deletarChamado(Long idUsuario, Long id) {
-//
-//        Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow(() -> new NotFound("usuario não encontrado"));
-//
-//        Chamado chamado = chamadoRepository.findById(id).orElseThrow(() -> new NotFound("usuario não encontrado"));
-//
-//        if (!chamado.getUsuario().getId().equals(usuario.getId())) {
-//            throw  new NotFound("Chamado não pertence a esse usuario");
-//        }
-//
-//        chamadoRepository.deleteById(id);
-//    }
-    @Test
-    public void deletarChamado(){
 
-        Long id = 1L;
-        Long usuarioid = 1L;
+    @Test
+    public void deletarChamado() {
+
+        Long usuarioId = 1L;
+        Long chamadoId = 10L;
 
         Usuario usuario = new Usuario();
-        usuario.setId(1L);
+        usuario.setId(usuarioId);
 
         Chamado chamado = new Chamado();
-        chamado.setId(1L);
+        chamado.setId(chamadoId);
         chamado.setStatus("FINALIZADO");
         chamado.setUsuario(usuario);
 
-        Mockito.when(chamadoRepository.findById(id)).thenReturn(Optional.of(chamado));
+        Mockito.when(usuarioRepository.findById(usuarioId)).thenReturn(Optional.of(usuario));
+        Mockito.when(chamadoRepository.findById(chamadoId)).thenReturn(Optional.of(chamado));
 
-        Mockito.when(usuarioRepository.findById(usuario.getId())).thenReturn(Optional.of(usuario));
+        clientChamadoService.deletarChamado(usuarioId, chamadoId);
 
-        clientChamadoService.deletarChamado(id, usuarioid);
-
-        Mockito.verify(chamadoRepository, Mockito.times(1)).deleteById(id);
+        Mockito.verify(chamadoRepository, Mockito.times(1)).deleteById(chamadoId);
     }
 
 
